@@ -2,55 +2,211 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Griffen Garg</title>
+  <title>Griffen Zambesi Garg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      height: 100vh;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #f0f4ff, #ffffff);
       display: flex;
-      align-items: center;
       justify-content: center;
+      padding: 40px;
+      min-height: 100vh;
     }
+
     .card {
       background: white;
-      padding: 32px;
-      border-radius: 16px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-      max-width: 420px;
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 700px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #111827;
       text-align: center;
     }
-    h1 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 28px;
-    }
+
     p {
-      margin: 0 0 20px;
       color: #555;
+      font-size: 16px;
+      margin-bottom: 8px;
     }
-    a {
-      display: block;
-      margin: 10px 0;
-      text-decoration: none;
-      font-weight: 500;
+
+    .contact {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .contact a {
       color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
     }
-    a:hover {
-      text-decoration: underline;
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #e2e8f0;
+      margin-bottom: 20px;
+      cursor: pointer;
     }
+
+    .tab {
+      padding: 10px 20px;
+      font-weight: 600;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+
+    .tab.active {
+      color: #2563eb;
+      border-bottom: 3px solid #2563eb;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeContent 0.5s ease forwards;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeContent {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* List styles */
+    ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    /* Optional: make it scrollable on small screens */
+    .tab-content {
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Griffen Garg</h1>
-    <p>Student · Writer · Game Designer</p>
+    <h1>Griffen Zambesi Garg</h1>
+    <div class="contact">
+      <p>47 Wainwright Road, Winchester, Massachusetts</p>
+      <p>+1 (781) 526-3865 | <a href="mailto:Griffengarg@gmail.com">Griffengarg@gmail.com</a></p>
+    </div>
 
-    <a href="mailto:your@email.com">Email</a>
-    <a href="#">Portfolio</a>
-    <a href="#">GitHub</a>
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" data-tab="info">About Me</div>
+      <div class="tab" data-tab="achievements">Extracurricular Achievements</div>
+    </div>
+
+    <!-- Tab Contents -->
+    <div id="info" class="tab-content active">
+      <p>Student · Writer · Game Designer</p>
+    </div>
+
+    <div id="achievements" class="tab-content">
+      <h3>Soccer</h3>
+      <ul>
+        <li>Tampa FC Gold - (Fall 2022, Spring 2023)</li>
+        <li>Winchester Town Soccer - (Fall 2023, Spring 2024)</li>
+        <li>Winchester Town Travel Soccer - (Fall 2024, Spring 2025, Fall 2025)</li>
+        <li>Club Level Soccer League - (Winter Season of 2024 and 25) — MVP of League Champion Team</li>
+        <li>Fellsway Wanderers Goalkeeper Training Program - (1 season)</li>
+        <li>Goalkeeper Training from Harvard Varsity Assistant Goalkeeping Coach - (1 year)</li>
+      </ul>
+
+      <h3>Chess</h3>
+      <ul>
+        <li>School Chess Club with Chess Master (Fall 2021 - Spring 2023)</li>
+        <li>Winner of School Wide Tournament (3rd Grade)</li>
+        <li>Chess Lessons with David Vigorito, International Master (Sep 2023 - Present)</li>
+        <li>Multiple tournament placements including Chessapalooza and Quads</li>
+        <li>Andover Chess Club (Sep 2023 - Present)</li>
+        <li>Chess Lessons with Dean Ippolito, International Master (Sep 2024 - Present)</li>
+        <li>Second Place at International School of Boston tournament (Fall 2024)</li>
+        <li>Intern at David Vigorito’s Chess Camp (Summer 2025)</li>
+        <li>US Chess Federation rating in development (Spring 2025 - Present)</li>
+      </ul>
+
+      <h3>Clubs</h3>
+      <ul>
+        <li>Newspaper Club - 2nd in command, Writer and Editor (2024-25)</li>
+        <li>V-O On Stage Club (Spring 2025)</li>
+        <li>Math Team/Club (Oct 2025 - Present)</li>
+        <li>Student Council (Oct 2025 - Present)</li>
+        <li>Debate Team/Club (Oct 2025 - Present)</li>
+        <li>Magic the Gathering Club (Nov 2025 - Present)</li>
+      </ul>
+
+      <h3>Music</h3>
+      <ul>
+        <li>Guitar (Fall 2021 - Spring 2023) — Performed at Distinguished Professor's Birthday Party</li>
+        <li>Alto Saxophone (Oct 2023 - Present) — Numerous concerts at Winchester High School</li>
+        <li>Piano (Sep 2025 - Present)</li>
+      </ul>
+
+      <h3>Miscellaneous</h3>
+      <ul>
+        <li>Winner of 5+ Competitive Talent Shows at YMCA (Fall 2021 - Spring 2023)</li>
+        <li>Bugsy Malone Acting Performance (Summer 2022)</li>
+        <li>Camper at Winchester Yacht Club Sailing Program (Summer 2022 & 2023) — 2nd Place Make-A-Wish Regatta</li>
+        <li>Interned at UAMS Lab (Summer 2024)</li>
+        <li>Kumon Participant (Fall 2023 - Present) — Top 10% award in 4th grade</li>
+        <li>Mentor Program at School (Spring 2025) — Received Award</li>
+      </ul>
+
+      <h3>Community Service / Volunteering</h3>
+      <ul>
+        <li>Student Council (Oct 2025 - Present)</li>
+        <li>Project Linus — Made blankets for sick kids</li>
+        <li>Fundraised for school — $500 raised</li>
+      </ul>
+    </div>
   </div>
+
+  <script>
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        // Hide all contents
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Activate clicked tab and corresponding content
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
