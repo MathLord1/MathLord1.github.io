@@ -1,206 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Griffen Zambesi Garg</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Fonts -->
+  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f0f4ff, #ffffff);
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      color: #e5e7eb;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 40px;
-      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 820px;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
-      background: white;
-      padding: 40px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(10px);
       border-radius: 20px;
-      max-width: 700px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-      animation: fadeIn 0.8s ease forwards;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 2px solid rgba(99,102,241,0.6);
+      box-shadow: 0 0 25px rgba(99,102,241,0.35);
     }
 
     h1 {
       font-size: 32px;
-      margin-bottom: 10px;
-      color: #111827;
-      text-align: center;
-    }
-
-    p {
-      color: #555;
-      font-size: 16px;
+      font-weight: 700;
       margin-bottom: 8px;
     }
 
-    .contact {
-      text-align: center;
-      margin-bottom: 20px;
+    .meta {
+      font-size: 14px;
+      color: #9ca3af;
+      line-height: 1.6;
     }
 
-    .contact a {
-      color: #2563eb;
+    .meta a {
+      color: #818cf8;
       text-decoration: none;
-      font-weight: 600;
     }
 
     /* Tabs */
     .tabs {
       display: flex;
-      border-bottom: 2px solid #e2e8f0;
-      margin-bottom: 20px;
-      cursor: pointer;
+      gap: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin: 35px 0 20px;
     }
 
     .tab {
-      padding: 10px 20px;
+      padding-bottom: 12px;
       font-weight: 600;
-      color: #555;
-      transition: all 0.3s ease;
+      font-size: 15px;
+      color: #9ca3af;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
     }
 
     .tab.active {
-      color: #2563eb;
-      border-bottom: 3px solid #2563eb;
+      color: #e5e7eb;
     }
 
-    .tab-content {
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #6366f1, #22d3ee);
+    }
+
+    .content {
       display: none;
-      animation: fadeContent 0.5s ease forwards;
+      animation: fadeIn 0.4s ease forwards;
     }
 
-    .tab-content.active {
+    .content.active {
       display: block;
     }
 
-    @keyframes fadeContent {
+    @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    /* List styles */
+    .content p {
+      color: #d1d5db;
+      line-height: 1.75;
+      font-size: 15.5px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      margin-top: 24px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #93c5fd;
+    }
+
     ul {
-      margin-left: 20px;
-      margin-bottom: 15px;
+      padding-left: 18px;
+      margin-bottom: 14px;
     }
 
     li {
       margin-bottom: 6px;
-      line-height: 1.4;
+      color: #d1d5db;
+      font-size: 14.5px;
     }
 
-    /* Optional: make it scrollable on small screens */
-    .tab-content {
-      max-height: 400px;
-      overflow-y: auto;
-      padding-right: 10px;
+    /* Subtle hover polish */
+    .tab:hover {
+      color: #c7d2fe;
     }
 
+    @media (max-width: 600px) {
+      .card {
+        padding: 28px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="card">
-  <img src="Griffen-Headshot.jpg" alt="Griffen Garg" style="width:550px; height:550px; border-radius:50%; display:block; margin:0 auto 20px;">
-  <h1>Griffen Zambesi Garg</h1>
-  <div class="contact">
-    <p>47 Wainwright Road, Winchester, Massachusetts</p>
-    <p>+1 (781) 526-3865 | <a href="mailto:Griffengarg@gmail.com">Griffengarg@gmail.com</a></p>
-  </div>
-</div>
+  <div class="container">
+    <div class="card">
 
-    <!-- Tabs -->
-    <div class="tabs">
-      <div class="tab active" data-tab="info">About Me</div>
-      <div class="tab" data-tab="achievements">Extracurricular Achievements</div>
-    </div>
+      <div class="header">
+        <img src="Griffen-Headshot.jpg" alt="Griffen Garg">
+        <h1>Griffen Zambesi Garg</h1>
+        <div class="meta">
+          McCall Middle School<br>
+          Winchester, Massachusetts<br>
+          <a href="mailto:Griffengarg@gmail.com">Griffengarg@gmail.com</a>
+        </div>
+      </div>
 
+      <div class="tabs">
+        <div class="tab active" data-tab="about">About</div>
+        <div class="tab" data-tab="activities">Activities</div>
+      </div>
 
-    <div id="achievements" class="tab-content">
-      <h3>Soccer</h3>
-      <ul>
-        <li>Tampa FC Gold - (Fall 2022, Spring 2023)</li>
-        <li>Winchester Town Soccer - (Fall 2023, Spring 2024)</li>
-        <li>Winchester Town Travel Soccer - (Fall 2024, Spring 2025, Fall 2025)</li>
-        <li>Club Level Soccer League - (Winter Season of 2024 and 25) — MVP of League Champion Team</li>
-        <li>Fellsway Wanderers Goalkeeper Training Program - (1 season)</li>
-        <li>Goalkeeper Training from Harvard Varsity Assistant Goalkeeping Coach - (1 year)</li>
-      </ul>
+      <div id="about" class="content active">
+        <p>
+          I’m Griffen Zambesi Garg, a student at McCall Middle School with a strong interest in technology,
+          strategic thinking, and creative problem-solving. I enjoy working on projects that combine logic,
+          structure, and originality, whether that’s through competitive activities, academic clubs, or
+          independent exploration.
+        </p>
+        <p>
+          I’m especially drawn to environments that challenge me to think critically, adapt quickly,
+          and collaborate with others. I value persistence, curiosity, and precision, and I’m always
+          looking for ways to push my skills further.
+        </p>
+      </div>
 
-      <h3>Chess</h3>
-      <ul>
-        <li>School Chess Club with Chess Master (Fall 2021 - Spring 2023)</li>
-        <li>Winner of School Wide Tournament (3rd Grade)</li>
-        <li>Chess Lessons with David Vigorito, International Master (Sep 2023 - Present)</li>
-        <li>Multiple tournament placements including Chessapalooza and Quads</li>
-        <li>Andover Chess Club (Sep 2023 - Present)</li>
-        <li>Chess Lessons with Dean Ippolito, International Master (Sep 2024 - Present)</li>
-        <li>Second Place at International School of Boston tournament (Fall 2024)</li>
-        <li>Intern at David Vigorito’s Chess Camp (Summer 2025)</li>
-        <li>US Chess Federation rating in development (Spring 2025 - Present)</li>
-      </ul>
+      <div id="activities" class="content">
+        <div class="section-title">Highlights</div>
+        <ul>
+          <li>Competitive soccer player with league MVP recognition</li>
+          <li>Advanced chess training with International Masters</li>
+          <li>Writer and editor in school newspaper leadership</li>
+          <li>Active in math, debate, and student council</li>
+          <li>Music experience across saxophone, guitar, and piano</li>
+        </ul>
 
-      <h3>Clubs</h3>
-      <ul>
-        <li>Newspaper Club - 2nd in command, Writer and Editor (2024-25)</li>
-        <li>V-O On Stage Club (Spring 2025)</li>
-        <li>Math Team/Club (Oct 2025 - Present)</li>
-        <li>Student Council (Oct 2025 - Present)</li>
-        <li>Debate Team/Club (Oct 2025 - Present)</li>
-        <li>Magic the Gathering Club (Nov 2025 - Present)</li>
-      </ul>
+        <div class="section-title">Community & Leadership</div>
+        <ul>
+          <li>Student Council involvement</li>
+          <li>Fundraising and service projects</li>
+          <li>Mentorship and academic enrichment programs</li>
+        </ul>
+      </div>
 
-      <h3>Music</h3>
-      <ul>
-        <li>Guitar (Fall 2021 - Spring 2023) — Performed at Distinguished Professor's Birthday Party</li>
-        <li>Alto Saxophone (Oct 2023 - Present) — Numerous concerts at Winchester High School</li>
-        <li>Piano (Sep 2025 - Present)</li>
-      </ul>
-
-      <h3>Miscellaneous</h3>
-      <ul>
-        <li>Winner of 5+ Competitive Talent Shows at YMCA (Fall 2021 - Spring 2023)</li>
-        <li>Bugsy Malone Acting Performance (Summer 2022)</li>
-        <li>Camper at Winchester Yacht Club Sailing Program (Summer 2022 & 2023) — 2nd Place Make-A-Wish Regatta</li>
-        <li>Interned at UAMS Lab (Summer 2024)</li>
-        <li>Kumon Participant (Fall 2023 - Present) — Top 10% award in 4th grade</li>
-        <li>Mentor Program at School (Spring 2025) — Received Award</li>
-      </ul>
-
-      <h3>Community Service / Volunteering</h3>
-      <ul>
-        <li>Student Council (Oct 2025 - Present)</li>
-        <li>Project Linus — Made blankets for sick kids</li>
-        <li>Fundraised for school — $500 raised</li>
-      </ul>
     </div>
   </div>
 
   <script>
-    // Tab functionality
     const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.tab-content');
+    const contents = document.querySelectorAll('.content');
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Remove active class from all tabs
         tabs.forEach(t => t.classList.remove('active'));
-        // Hide all contents
         contents.forEach(c => c.classList.remove('active'));
 
-        // Activate clicked tab and corresponding content
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
       });
