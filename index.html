@@ -1,219 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Griffen Zambesi Garg</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --accent: #7c7cff;
+      --accent-soft: rgba(124,124,255,0.4);
+      --bg-dark: #020617;
+      --bg-card: rgba(15,23,42,0.72);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: #e5e7eb;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(124,124,255,0.15), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(34,211,238,0.12), transparent 45%),
+        var(--bg-dark);
+      color: var(--text-main);
       min-height: 100vh;
+      padding: 60px 20px;
       display: flex;
       justify-content: center;
-      padding: 40px 20px;
     }
 
-    .container {
+    .shell {
       width: 100%;
-      max-width: 820px;
-      animation: fadeUp 0.8s ease forwards;
+      max-width: 920px;
+      animation: rise 1s cubic-bezier(.16,1,.3,1);
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.06);
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      margin-bottom: 40px;
     }
 
-    .header img {
+    .hero img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 20px;
-      border: 2px solid rgba(99,102,241,0.6);
-      box-shadow: 0 0 25px rgba(99,102,241,0.35);
+      border: 2px solid var(--accent-soft);
+      box-shadow: 0 0 40px var(--accent-soft);
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 700;
-      margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
 
-    .meta {
-      font-size: 14px;
-      color: #9ca3af;
+    .subtitle {
+      margin-top: 6px;
+      font-size: 15px;
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
-    .meta a {
-      color: #818cf8;
+    .subtitle a {
+      color: var(--accent);
       text-decoration: none;
     }
 
-    /* Tabs */
-    .tabs {
+    /* NAV */
+    .nav {
       display: flex;
-      gap: 24px;
+      gap: 28px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin: 35px 0 20px;
+      margin-bottom: 28px;
     }
 
-    .tab {
-      padding-bottom: 12px;
-      font-weight: 600;
+    .nav button {
+      background: none;
+      border: none;
+      padding: 12px 0;
       font-size: 15px;
-      color: #9ca3af;
+      font-weight: 600;
+      color: var(--text-muted);
       cursor: pointer;
       position: relative;
       transition: color 0.3s ease;
     }
 
-    .tab.active {
-      color: #e5e7eb;
+    .nav button.active {
+      color: var(--text-main);
     }
 
-    .tab.active::after {
+    .nav button.active::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: -1px;
       width: 100%;
       height: 2px;
-      background: linear-gradient(90deg, #6366f1, #22d3ee);
+      background: linear-gradient(90deg, var(--accent), #22d3ee);
     }
 
-    .content {
+    .panel {
       display: none;
-      animation: fadeIn 0.4s ease forwards;
+      animation: fade 0.4s ease;
     }
 
-    .content.active {
+    .panel.active {
       display: block;
     }
 
-    @keyframes fadeIn {
+    @keyframes fade {
       from { opacity: 0; }
       to { opacity: 1; }
     }
 
-    .content p {
+    .panel p {
       color: #d1d5db;
-      line-height: 1.75;
+      line-height: 1.8;
       font-size: 15.5px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
-    .section-title {
-      margin-top: 24px;
+    .label {
+      margin-top: 28px;
       margin-bottom: 10px;
-      font-size: 14px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
       color: #93c5fd;
     }
 
     ul {
       padding-left: 18px;
-      margin-bottom: 14px;
     }
 
     li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: #d1d5db;
       font-size: 14.5px;
     }
 
-    /* Subtle hover polish */
-    .tab:hover {
-      color: #c7d2fe;
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        padding: 28px;
-      }
-      h1 {
-        font-size: 26px;
+    @media (max-width: 700px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="shell">
     <div class="card">
 
-      <div class="header">
-        <img src="Griffen-Headshot.jpg" alt="Griffen Garg">
-        <h1>Griffen Zambesi Garg</h1>
-        <div class="meta">
-          McCall Middle School<br>
-          Winchester, Massachusetts<br>
-          <a href="mailto:Griffengarg@gmail.com |">Griffengarg@gmail.com</a>
-          <a href=" mailto:11532@wpsstudent.com">11532@wpsstudent.com</a>
+      <div class="hero">
+        <img src="Griffen-Headshot" alt="Griffen Garg">
+        <div>
+          <h1>Griffen Zambesi Garg</h1>
+          <div class="subtitle">
+            McCall Middle School · Winchester, MA<br>
+            <a href="mailto:Griffengarg@gmail.com">Griffengarg@gmail.com</a>
+          </div>
         </div>
       </div>
 
-      <div class="tabs">
-        <div class="tab active" data-tab="about">About</div>
-        <div class="tab" data-tab="activities">Activities</div>
+      <div class="nav">
+        <button class="active" data-tab="about">About</button>
+        <button data-tab="focus">Focus</button>
       </div>
 
-      <div id="about" class="content active">
+      <div id="about" class="panel active">
         <p>
-          I’m Griffen Zambesi Garg, a student at McCall Middle School with a strong interest in technology,
-          strategic thinking, and creative problem-solving. I enjoy working on projects that combine logic,
-          structure, and originality, whether that’s through competitive activities, academic clubs, or
-          independent exploration.
+          I’m Griffen Zambesi Garg, a student at McCall Middle School with a strong interest in
+          technology, analytical thinking, and systems that reward precision and creativity.
+          I enjoy environments that challenge me to think strategically, iterate quickly,
+          and continuously improve.
         </p>
         <p>
-          I’m especially drawn to environments that challenge me to think critically, adapt quickly,
-          and collaborate with others. I value persistence, curiosity, and precision, and I’m always
-          looking for ways to push my skills further.
+          Whether through competitive activities, leadership roles, or independent projects,
+          I focus on building skills that compound over time—problem-solving, adaptability,
+          and disciplined execution.
         </p>
       </div>
 
-      <div id="activities" class="content">
-        <div class="section-title">Highlights</div>
+      <div id="focus" class="panel">
+        <div class="label">Current Areas</div>
         <ul>
-          <li>Competitive soccer player with league-winning team MVP recognition</li>
-          <li>Advanced chess training with International Masters</li>
-          <li>Writer and editor in school newspaper leadership</li>
-          <li>Active in math, debate, and student council</li>
-          <li>Music experience across saxophone, guitar, and piano</li>
+          <li>Competitive strategy (chess & athletics)</li>
+          <li>Analytical and mathematical thinking</li>
+          <li>Leadership and communication</li>
+          <li>Creative and technical exploration</li>
         </ul>
 
-        <div class="section-title">Community & Leadership</div>
+        <div class="label">Highlights</div>
         <ul>
-          <li>Student Council involvement</li>
-          <li>Fundraising and service projects</li>
-          <li>Mentorship and academic enrichment programs</li>
+          <li>Advanced chess training with International Masters</li>
+          <li>League-winning team MVP recognition in competitive soccer</li>
+          <li>Leadership role in school newspaper</li>
+          <li>Active in math, debate, and student council</li>
         </ul>
       </div>
 
@@ -221,16 +227,16 @@
   </div>
 
   <script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
+    const buttons = document.querySelectorAll('.nav button');
+    const panels = document.querySelectorAll('.panel');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        panels.forEach(p => p.classList.remove('active'));
 
-        tab.classList.add('active');
-        document.getElementById(tab.dataset.tab).classList.add('active');
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
       });
     });
   </script>
